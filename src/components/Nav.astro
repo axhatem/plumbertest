@@ -1,28 +1,39 @@
 ---
 // Composant Nav
-const pathname = Astro.url.pathname.split('/').slice(-1)[0];
+const pathname = Astro.url.pathname.split("/").slice(-1)[0];
+import { withBase } from "../utils/config-utils.ts";
+const homePageUrl = withBase("/");
+const contactPageUrl = withBase("/contact");
+const legalPageUrl = withBase("/mentions-legales");
+const aboutPageUrl = withBase("/a-propos");
 ---
+
 <style>
-    .nav {
-        display: flex;
-        justify-content: space-around;
-        padding: 1rem 0;
-        background: #444;
-    }
-    .nav a {
-        font-weight: 500;;
-        color: #fff;
-        text-decoration: none;
-    }
-    .nav a.active {
-        color: wheat; 
-    }
-    </style>
-    
-    <div class="nav">
-        <a href="/" class={pathname  === '' ? 'active' : ''}>Home</a>
-        <a href="/contact" class={pathname === 'contact' ? 'active' : ''}>Contact</a>
-        <a href="/mentions-legales" class={pathname === 'mentions-legales' ? 'active' : ''}>Mentions Légales</a>
-        <a href="/a-propos" class={pathname === 'a-propos' ? 'active' : ''}>À Propos</a>
-    </div>
-    
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0;
+    background: #444;
+  }
+  .nav a {
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav a.active {
+    color: wheat;
+  }
+</style>
+
+<div class="nav">
+  <a href={homePageUrl} class={pathname === "" ? "active" : ""}>Home</a>
+  <a href={contactPageUrl} class={pathname === "contact" ? "active" : ""}
+    >Contact</a
+  >
+  <a href={legalPageUrl} class={pathname === "mentions-legales" ? "active" : ""}
+    >Mentions Légales</a
+  >
+  <a href={aboutPageUrl} class={pathname === "a-propos" ? "active" : ""}
+    >À Propos</a
+  >
+</div>
