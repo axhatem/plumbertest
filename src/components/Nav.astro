@@ -1,6 +1,6 @@
 ---
 // Composant Nav
-const pathname = Astro.url.pathname.split("/").slice(-1)[0];
+const pathname = Astro.url.pathname.split("/").slice(-1)[1];
 import { withBase } from "../utils/config-utils.ts";
 const homePageUrl = withBase("/");
 const contactPageUrl = withBase("/contact");
