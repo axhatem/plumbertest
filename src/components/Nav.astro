@@ -1,7 +1,12 @@
 ---
-// Composant Nav
-const pathname = Astro.url.pathname.split("/").slice(-1)[0];
 import { withBase } from "../utils/config-utils.ts";
+
+function removeTrailingSlash(str: string): string {
+  return str.endsWith("/") ? str.slice(0, -1) : str;
+}
+const pathname = removeTrailingSlash(Astro.url.pathname)
+  .split("/")
+  .slice(-1)[0];
 const homePageUrl = withBase("/");
 const contactPageUrl = withBase("/contact");
 const legalPageUrl = withBase("/mentions-legales");
@@ -26,6 +31,7 @@ const aboutPageUrl = withBase("/a-propos");
 </style>
 
 <p>{Astro.url.pathname}</p>
+<p>{pathname}</p>
 <div class="nav">
   <a href={homePageUrl} class={pathname === "" ? "active" : ""}>Home</a>
   <a href={contactPageUrl} class={pathname === "contact" ? "active" : ""}
