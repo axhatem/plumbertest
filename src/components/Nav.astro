@@ -30,9 +30,6 @@ const aboutPageUrl = withBase("/a-propos");
     color: wheat;
   }
 </style>
-
-<p>{Astro.url.pathname}</p>
-<p>{pathname}</p>
 <div class="nav">
   <a href={homePageUrl} class={`/${pathname}` === BASE_CONFIG ? "active" : ""}
     >Home</a
